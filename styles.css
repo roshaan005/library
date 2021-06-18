@@ -1,6 +1,6 @@
 .background{
     width:100%;
-    height:300px;
+    height:250px;
     background: #C33764;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -8,7 +8,7 @@
 }
 
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(22, 22, 22);
 }
 .heading{
    padding-top: 5%;
@@ -34,7 +34,7 @@ body{
    justify-content: space-between;
     align-items:center;
     color:white;
-    background-color: rgb(27, 25, 25) ;
+    background-color: rgb(39, 37, 37) ;
     font-size: 17px;
  
     
@@ -45,11 +45,27 @@ body{
     padding-top: 0px;
    
 }
+
 #bookname{
     height:20px;
     width:250px;
     outline:none;
 }
+#writer{
+    height:20px;
+    width:250px;
+    outline:none;
+
+}
+.display{
+    display:none;
+}
+#pages{
+    height:20px;
+    width:250px;
+    outline:none;
+}
+
 #check{
     width:50px;
     height:30px;
@@ -67,9 +83,55 @@ body{
 }
 .close{
     margin-left:300px;
+    margin-top: 3%;
     color:gray;
    
 }
 .close:hover{
     color:hotpink
 }
+.main{
+    margin:auto;
+    width:700px;
+    background-color:rgb(35, 35, 36);
+    color:white;
+    font-size:20px;
+    border-collapse: collapse;
+    
+}
+td{
+    overflow-wrap: break-word;
+}
+.row{
+    text-align: center;
+    height:70px;
+    font-size:20px;
+    overflow-wrap: break-word;
+}
+.invisible{
+    background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height:26px;
+}
+.head{
+    height:35px;
+}
+#remove:hover{
+    color:green;
+}
+
+
+  #new{
+      width: 40px;
+      height:40px;
+      border-radius: 50%;
+      background-color: #C33764;
+      margin-top:27%;
+      margin-left:2%;
+      text-align: center;
+     font-size: 32px;
+     display:fixed;
+  }
+  #new:hover{
+      background-color: antiquewhite;
+  }

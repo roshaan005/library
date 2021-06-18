@@ -12,28 +12,53 @@
            
              <div class = "box">
         
-             <form class = "form">
-                 <div class = "close">x</div>
-                <label >book name</label><br>
+             <div  id = "form" class = "form">
+                 <div id = "end" class = "close">x</div>
+                <label >Book's name</label><br>
                 <input type="text"id = "bookname" ><br>
-                <label >writer's name:</label><br>
-                <input type="text"id = "bookname" ><br>
-                <label >total number of pages:</label><br>
-                <input type="text"id = "bookname" ><br>
+                <label >Writer's name:</label><br>
+                <input type="text" id = "writer" ><br>
+                <label >Total number of pages:</label><br>
+                <input type="text"id = "pages" ><br>
                 <label >Have you read this book?</label>
                 <input  id = "check"type="checkbox" ><br>
-               
-                <input type="submit" id = "submit" name="fname">
+                <button  id = "submit" name="fname">submit</button>
 
 
 
-             </form>
+             </div>
             
-            </div>
+            <table  id = "books" class = "main">
+                <tr class = "head">
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>pages</th>
+                  <th>status</th>
+                  <th>remove</th>
+                </tr>
+              <tr class = "invisible row">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+              
+             
+              
+            </table>
+           
+            
+            
+          
+
+           
     
            
         </div>
-      
+        
+        <div  id = "new">+</div>
        
        
        

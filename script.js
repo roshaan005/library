@@ -1,6 +1,163 @@
-const form = document.querySelector("form")
-const body = document.querySelector("body")
-body.addEventListener("click" , showForm)
-function showForm(){
+
+
+let table = document.getElementById("books")
+const form = document.getElementById("form")
+const newBook = document.getElementById("new")
+const bookn = document.getElementById("bookname")
+const submitBtn = document.getElementById("submit")
+const writer = document.getElementById("writer")
+const pages = document.getElementById("pages")
+const checkBox = document.getElementById("check")
+const crossBtn = document.getElementById("end")
+const row = document.getElementById("row")
+const tableBody = document.querySelector("tbody")
+
+
+
+console.log(submitBtn)
+
+myLibrary = []
+
+function book(name,author,pages,read){
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    
+
+}
+
+
+animalFarm = new book("Animal farm","george orwell",123, "not read")
+myLibrary.push(animalFarm)
+crossBtn.addEventListener("click",closeForm)
+newBook.addEventListener("click",formPopup)
+table.addEventListener("click",removeElement)
+
+
+
+
+
+submitBtn.addEventListener("click",storeInformation)
+function storeInformation(e){
+    if(checkBox.value = "on"){
+        checkBox.value = "read"
+    }
+    else{
+       checkBox.value =  "not read"
+    }
+
+
+    let newBook = new book(`${bookn.value}`,`${writer.value}`,`${pages.value}`,`${checkBox.value}`)
+    
+
+ 
+    myLibrary.push(newBook)
+    let lastElement = myLibrary.slice(-1).pop()
+    let lastElementArray  = []
+    lastElementArray.push(lastElement)
+    lastElementArray.forEach(book=> {
+          
+        let row = document.createElement("tr")
+        let data1 = document.createElement("td")
+        let data2 = document.createElement("td")
+        let data3 = document.createElement("td")
+        let data4 = document.createElement("td")
+        let data5 = document.createElement("td")
+        row.dataset.id= "hello"
+        row.classList.add("row")
+        row.setAttribute("id","row")
+        data1.textContent = book.name;
+        data2.textContent = book.author;
+        data3.textContent = book.pages;
+        data4.textContent = book.read;
+        data5.textContent = "x"
+        data5.classList.add("cross")
+        data5.setAttribute("id","remove")
+        row.appendChild(data1)
+        row.appendChild(data2)
+        row.appendChild(data3)
+        row.appendChild(data4)
+        row.appendChild(data5)
+        table.dataset.id = "hello"
+        tableBody.appendChild(row)
+        data4.dataset.status =  book.read
+
+    
+    
+
+
+});
+
+    table.classList.remove("display")
+
+    form.style.display = "none"
+   
+    bookn.value = ""
+    writer.value = ""
+    pages.value = ""
+    checkBox.value = ""
+   
+    
+}
+function formPopup(){
+    table.classList.add("display")
     form.style.display = "flex"
 }
+function closeForm(){
+    form.style.display = "none"
+    table.classList.remove("display")
+}
+
+
+function removeElement(e){
+    if(e.target.classList.contains("cross")){
+        parentEL = e.target.parentElement
+        tableBody.removeChild(parentEL)
+       
+    }
+    
+    
+    
+}
+
+
+
+console.log(myLibrary)
+myLibrary.forEach(book=> {
+          
+    let row = document.createElement("tr")
+    let data1 = document.createElement("td")
+    let data2 = document.createElement("td")
+    let data3 = document.createElement("td")
+    let data4 = document.createElement("td")
+    let data5 = document.createElement("td")
+    row.classList.add("row")
+    row.setAttribute("id","row")
+    data1.textContent = book.name
+    data2.textContent = book.author;
+    data3.textContent = book.pages;
+    data4.textContent = book.read;
+    data5.textContent = "x"
+    data1.dataset.name = book.name
+    data4.dataset.status = book.read
+    data4.classList.add("read")
+    data5.classList.add("cross")
+    data5.setAttribute("id","remove")
+    row.appendChild(data1)
+    row.appendChild(data2)
+    row.appendChild(data3)
+    row.appendChild(data4)
+    row.appendChild(data5)
+    table.dataset.id = "hello"
+    tableBody.appendChild(row)
+
+
+
+
+
+});
+console.log(table)
+console.log(tableBody)
+
+
