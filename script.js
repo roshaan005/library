@@ -9,9 +9,9 @@ const writer = document.getElementById("writer")
 const pages = document.getElementById("pages")
 const checkBox = document.getElementById("check")
 const crossBtn = document.getElementById("end")
-const row = document.getElementById("row")
 const tableBody = document.querySelector("tbody")
-
+const row = document.querySelectorAll("tr")
+const hope = document.getElementsByClassName("row")
 
 
 console.log(submitBtn)
@@ -28,7 +28,7 @@ function book(name,author,pages,read){
 }
 
 
-animalFarm = new book("Animal farm","george orwell",123, "not read")
+animalFarm = new book("Animal farm","george orwell",123, "✔")
 myLibrary.push(animalFarm)
 crossBtn.addEventListener("click",closeForm)
 newBook.addEventListener("click",formPopup)
@@ -41,10 +41,10 @@ table.addEventListener("click",removeElement)
 submitBtn.addEventListener("click",storeInformation)
 function storeInformation(e){
     if(checkBox.value = "on"){
-        checkBox.value = "read"
+        checkBox.value = "✔"
     }
     else{
-       checkBox.value =  "not read"
+       checkBox.value =  "☒"
     }
 
 
@@ -57,6 +57,7 @@ function storeInformation(e){
     let lastElementArray  = []
     lastElementArray.push(lastElement)
     lastElementArray.forEach(book=> {
+        
           
         let row = document.createElement("tr")
         let data1 = document.createElement("td")
@@ -64,7 +65,9 @@ function storeInformation(e){
         let data3 = document.createElement("td")
         let data4 = document.createElement("td")
         let data5 = document.createElement("td")
-        row.dataset.id= "hello"
+        data5.dataset.index = myLibrary.indexOf(book)
+        data4.dataset.index = myLibrary.indexOf(book)
+        data4.classList.add("read")
         row.classList.add("row")
         row.setAttribute("id","row")
         data1.textContent = book.name;
@@ -79,7 +82,7 @@ function storeInformation(e){
         row.appendChild(data3)
         row.appendChild(data4)
         row.appendChild(data5)
-        table.dataset.id = "hello"
+      
         tableBody.appendChild(row)
         data4.dataset.status =  book.read
 
@@ -112,8 +115,11 @@ function closeForm(){
 
 function removeElement(e){
     if(e.target.classList.contains("cross")){
+        console.log(e.target.dataset.index)
         parentEL = e.target.parentElement
         tableBody.removeChild(parentEL)
+        myLibrary = arrayRemove(myLibrary,myLibrary[e.target.dataset.index])
+
        
     }
     
@@ -132,6 +138,8 @@ myLibrary.forEach(book=> {
     let data3 = document.createElement("td")
     let data4 = document.createElement("td")
     let data5 = document.createElement("td")
+    data5.dataset.index = myLibrary.indexOf(book)
+    data4.dataset.index = myLibrary.indexOf(book)
     row.classList.add("row")
     row.setAttribute("id","row")
     data1.textContent = book.name
@@ -149,7 +157,6 @@ myLibrary.forEach(book=> {
     row.appendChild(data3)
     row.appendChild(data4)
     row.appendChild(data5)
-    table.dataset.id = "hello"
     tableBody.appendChild(row)
 
 
@@ -161,3 +168,34 @@ console.log(table)
 console.log(tableBody)
 
 
+console.log(row)
+console.log(hope)
+tableBody.addEventListener("click",changeStatus)
+
+function changeStatus(e){
+    if(e.target.classList.contains("read")){
+        
+       if(e.target.dataset.status == "☒"){
+           e.target.dataset.status = "✔"
+           myLibrary[e.target.dataset.index].read = "✔"
+           e.target.textContent = e.target.dataset.status
+          
+       }else if(e.target.dataset.status == "✔"){
+        e.target.dataset.status = "☒"
+        e.target.textContent = e.target.dataset.status
+        myLibrary[e.target.dataset.index].read = "☒"
+    }
+       console.log(e.target.dataset.status)
+       
+
+    }
+}
+
+
+    
+function arrayRemove(arr, value) { 
+    
+    return arr.filter(function(ele){ 
+        return ele != value; 
+    });
+}
