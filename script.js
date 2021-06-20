@@ -50,15 +50,7 @@ function storeInformation(e){
 
 
     
-    if(checkBox.value = "on"){
-        checkBox.value = "☒"
-
-        
-    }
-    else if(checkBox.value!= "on"){
-       checkBox.value =  "✔"
-    }
-
+  
    
     let newBook = new book(`${bookn.value}`,`${writer.value}`,`${pages.value}`,`${checkBox.value}`)
     
