@@ -1,23 +1,21 @@
+// declarations 
+let table = document.getElementById("books") // main container 
+const form = document.getElementById("form") // pop up form
+const newBook = document.getElementById("new") 
+const bookn = document.getElementById("bookname") // book name input field 
+const submitBtn = document.getElementById("submit") // submit button from the form 
+const writer = document.getElementById("writer") // writer's name input field 
+const pages = document.getElementById("pages") // number of pages input field 
+const checkBox = document.getElementById("check") // read status check button
+const crossBtn = document.getElementById("end") // close pop up button 
+const tableBody = document.querySelector("tbody") 
 
 
-let table = document.getElementById("books")
-const form = document.getElementById("form")
-const newBook = document.getElementById("new")
-const bookn = document.getElementById("bookname")
-const submitBtn = document.getElementById("submit")
-const writer = document.getElementById("writer")
-const pages = document.getElementById("pages")
-const checkBox = document.getElementById("check")
-const crossBtn = document.getElementById("end")
-const tableBody = document.querySelector("tbody")
-const row = document.querySelectorAll("tr")
-const hope = document.getElementsByClassName("row")
 
 
-console.log(submitBtn)
+let myLibrary = []
 
-myLibrary = []
-
+// main cosntructor function with name , author , number of pages and read status 
 function book(name,author,pages,read){
     this.name = name;
     this.author = author;
@@ -27,70 +25,50 @@ function book(name,author,pages,read){
 
 }
 
-
-animalFarm = new book("Animal farm","george orwell",123, "✔")
+//mannually added book 
+animalFarm = new book("Animal farm","George Orwell",123, "✔")
 myLibrary.push(animalFarm)
+// 
+
+// eventlistners 
 crossBtn.addEventListener("click",closeForm)
 newBook.addEventListener("click",formPopup)
 table.addEventListener("click",removeElement)
-
-
-
-
-
 submitBtn.addEventListener("click",storeInformation)
+tableBody.addEventListener("click",changeStatus)
+
+
+
+
+
+
 function storeInformation(e){
+    if(bookn.value ==""|| writer.value == "" ||pages.value === ""){
+        alert("please fill out the fields")
+        return
+    }
+
+
+    
     if(checkBox.value = "on"){
-        checkBox.value = "✔"
+        checkBox.value = "☒"
+
+        
     }
-    else{
-       checkBox.value =  "☒"
+    else if(checkBox.value!= "on"){
+       checkBox.value =  "✔"
     }
 
-
+   
     let newBook = new book(`${bookn.value}`,`${writer.value}`,`${pages.value}`,`${checkBox.value}`)
     
-
+    
  
     myLibrary.push(newBook)
     let lastElement = myLibrary.slice(-1).pop()
     let lastElementArray  = []
     lastElementArray.push(lastElement)
-    lastElementArray.forEach(book=> {
-        
-          
-        let row = document.createElement("tr")
-        let data1 = document.createElement("td")
-        let data2 = document.createElement("td")
-        let data3 = document.createElement("td")
-        let data4 = document.createElement("td")
-        let data5 = document.createElement("td")
-        data5.dataset.index = myLibrary.indexOf(book)
-        data4.dataset.index = myLibrary.indexOf(book)
-        data4.classList.add("read")
-        row.classList.add("row")
-        row.setAttribute("id","row")
-        data1.textContent = book.name;
-        data2.textContent = book.author;
-        data3.textContent = book.pages;
-        data4.textContent = book.read;
-        data5.textContent = "x"
-        data5.classList.add("cross")
-        data5.setAttribute("id","remove")
-        row.appendChild(data1)
-        row.appendChild(data2)
-        row.appendChild(data3)
-        row.appendChild(data4)
-        row.appendChild(data5)
-      
-        tableBody.appendChild(row)
-        data4.dataset.status =  book.read
-
-    
-    
-
-
-});
+    addBooks(lastElementArray);
 
     table.classList.remove("display")
 
@@ -129,54 +107,17 @@ function removeElement(e){
 
 
 
-console.log(myLibrary)
-myLibrary.forEach(book=> {
-          
-    let row = document.createElement("tr")
-    let data1 = document.createElement("td")
-    let data2 = document.createElement("td")
-    let data3 = document.createElement("td")
-    let data4 = document.createElement("td")
-    let data5 = document.createElement("td")
-    data5.dataset.index = myLibrary.indexOf(book)
-    data4.dataset.index = myLibrary.indexOf(book)
-    row.classList.add("row")
-    row.setAttribute("id","row")
-    data1.textContent = book.name
-    data2.textContent = book.author;
-    data3.textContent = book.pages;
-    data4.textContent = book.read;
-    data5.textContent = "x"
-    data1.dataset.name = book.name
-    data4.dataset.status = book.read
-    data4.classList.add("read")
-    data5.classList.add("cross")
-    data5.setAttribute("id","remove")
-    row.appendChild(data1)
-    row.appendChild(data2)
-    row.appendChild(data3)
-    row.appendChild(data4)
-    row.appendChild(data5)
-    tableBody.appendChild(row)
+addBooks(myLibrary)
 
 
 
-
-
-});
-console.log(table)
-console.log(tableBody)
-
-
-console.log(row)
-console.log(hope)
-tableBody.addEventListener("click",changeStatus)
 
 function changeStatus(e){
     if(e.target.classList.contains("read")){
         
        if(e.target.dataset.status == "☒"){
            e.target.dataset.status = "✔"
+           e.target.style.color = "green"
            myLibrary[e.target.dataset.index].read = "✔"
            e.target.textContent = e.target.dataset.status
           
@@ -184,6 +125,7 @@ function changeStatus(e){
         e.target.dataset.status = "☒"
         e.target.textContent = e.target.dataset.status
         myLibrary[e.target.dataset.index].read = "☒"
+        e.target.style.color = "red"
     }
        console.log(e.target.dataset.status)
        
@@ -199,3 +141,52 @@ function arrayRemove(arr, value) {
         return ele != value; 
     });
 }
+function addBooks(array){
+    array.forEach(book=> {
+          
+        let row = document.createElement("tr")
+        let data1 = document.createElement("td")
+        let data2 = document.createElement("td")
+        let data3 = document.createElement("td")
+        let data4 = document.createElement("td")
+        let data5 = document.createElement("td")
+        data5.dataset.index = myLibrary.indexOf(book)
+        data4.dataset.index = myLibrary.indexOf(book)
+        row.classList.add("row")
+        row.setAttribute("id","row")
+        data1.textContent = book.name
+        data2.textContent = book.author;
+        data3.textContent = book.pages;
+        if(book.read == "✔"){
+            data4.style.color = "green"
+             
+        }else if(book.read == "☒"){
+            data4.style.color = "red"
+
+        }
+        data4.style.fontSize = "25px"
+        data4.textContent = book.read;
+        
+        
+        data5.textContent = "x"
+        data1.dataset.name = book.name
+        data4.dataset.status = book.read
+        data4.classList.add("read")
+        data5.classList.add("cross")
+        data5.setAttribute("id","remove")
+        row.appendChild(data1)
+        row.appendChild(data2)
+        row.appendChild(data3)
+        row.appendChild(data4)
+        row.appendChild(data5)
+        tableBody.appendChild(row)
+    
+        
+    
+    
+    
+    });
+    
+
+}
+
