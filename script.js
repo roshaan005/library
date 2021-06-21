@@ -4,12 +4,11 @@ const form = document.getElementById("form") // pop up form
 const newBook = document.getElementById("new") 
 const bookn = document.getElementById("bookname") // book name input field 
 const submitBtn = document.getElementById("submit") // submit button from the form 
-const writer = document.getElementById("writer") // writer's name input field 
+const writer = document.getElementById("writer")// writer's name input field 
 const pages = document.getElementById("pages") // number of pages input field 
 const checkBox = document.getElementById("check") // read status check button
 const crossBtn = document.getElementById("end") // close pop up button 
 const tableBody = document.querySelector("tbody") 
-
 
 
 
@@ -43,16 +42,30 @@ tableBody.addEventListener("click",changeStatus)
 
 
 function storeInformation(e){
-    if(bookn.value ==""|| writer.value == "" ||pages.value === ""){
+    
+    if(bookn.value ==""|| writer.value == "" ||pages.value === ""||checkBox.value === ""){
         alert("please fill out the fields")
         return
     }
+    
+    if(pages.value < 0){
+        alert("Please fill out the fields correctly")
+        return 
+    }
+    
+  if(!Number.isInteger(parseInt(pages.value)) ){
+      alert("Please fill out the fields correctly")
+     return 
+      
+  }
+        
+    
 
-
+   console.log(Number.isInteger(parseInt(pages.value)))
     
   
    
-    let newBook = new book(`${bookn.value}`,`${writer.value}`,`${pages.value}`,`${checkBox.value}`)
+    let newBook = new book(`${bookn.value}`,`${writer.value}`,parseInt(pages.value),`${checkBox.value}`)
     
     
  
@@ -181,4 +194,5 @@ function addBooks(array){
     
 
 }
+
 
