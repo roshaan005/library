@@ -75,7 +75,9 @@ body{
 }
 #submit{
     margin-bottom: 30px;
-
+    outline: none;
+    border: none;
+   
     color:white;
     outline: none;
     width:200px;
@@ -83,6 +85,10 @@ body{
     background: #C33764;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#submit:hover{
+    transform: scale(1.2,1.2);
+    box-shadow: 9px 12px 36px -3px rgba(0,0,0,0.7);
 }
 .close{
     margin-left:300px;
