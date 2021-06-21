@@ -70,7 +70,7 @@ body{
 }
 
 #check{
-    width:50px;
+    width:90px;
     height:30px;
 }
 #submit{
@@ -95,7 +95,7 @@ body{
 }
 .main{
     margin:auto;
-    width:700px;
+    width:750px;
     background-color:rgb(35, 35, 36);
     color:white;
     font-size:20px;
@@ -106,7 +106,7 @@ body{
     -moz-box-shadow: 9px 12px 36px -3px rgba(0,0,0,0.7);
     table-layout: fixed;
     border-radius: 2%;
-    font-family: 'Amiri', serif;
+    
     
 }
 td{
@@ -115,9 +115,10 @@ td{
 }
 .row{
     text-align: center;
-    height:70px;
+    height:80px;
     font-size:20px;
     overflow-wrap: break-word;
+    
 }
 .invisible{
     background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
@@ -125,7 +126,8 @@ td{
     height:26px;
 }
 .head{
-    height:35px;
+    height:65px;
+    font-size: 20px;
 }
 #remove{
     font-size: 30px;
@@ -138,13 +140,15 @@ td{
   #new{
       width: 40px;
       height:40px;
+      position:absolute;
+      margin-top:250px;
+      margin-left:20px;
       
       background-color:rgb(206, 72, 94);
-      margin-top:21%;
-      margin-left:2%;
+      
       text-align: center;
       font-size: 35px;
-      transition:width 2s,height, 3s,transform 4s;
+      transition:width 2s,height, 2s,transform 1s;
   }
  #new:hover{
         transform : rotate(180deg);
@@ -153,6 +157,9 @@ td{
         border-radius:50%;
         font-size: 40px;
         background-color:rgb(34, 34, 138);
-        
+        color:plum
      
  }
+.read:hover{
+   font-size: 90px;
+}
