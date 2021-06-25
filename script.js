@@ -48,16 +48,7 @@ function storeInformation(e){
         return
     }
     
-    if(pages.value < 0){
-        alert("Please fill out the fields correctly")
-        return 
-    }
-    
-  if(!Number.isInteger(parseInt(pages.value)) ){
-      alert("Please fill out the fields correctly")
-     return 
-      
-  }
+
         
     
 
@@ -194,5 +185,7 @@ function addBooks(array){
     
 
 }
+
+
 
 
