@@ -100,7 +100,7 @@ body{
     color:hotpink
 }
 .main{
-  margin-left:24%;
+    margin-left:24%;
     align-self: flex-start;
     width:750px;
     background-color:rgb(35, 35, 36);
@@ -113,7 +113,7 @@ body{
     -moz-box-shadow: 9px 12px 36px -3px rgba(0,0,0,0.7);
     table-layout: fixed;
     border-radius: 2%;
- 
+   
     
     
 }
@@ -175,6 +175,7 @@ td{
 }
 #flex{
     display:flex;
+    overflow-y: scroll;
 
     height:500px;
     
