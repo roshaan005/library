@@ -15,14 +15,16 @@ const tableBody = document.querySelector("tbody")
 let myLibrary = []
 
 // main cosntructor function with name , author , number of pages and read status 
-function book(name,author,pages,read){
-    this.name = name;
+
+class book{
+    constructor(name,author,pages,read){
+    this.name = name
     this.author = author;
     this.pages = pages;
     this.read = read;
-    
-
 }
+}
+
 
 //mannually added book 
 animalFarm = new book("Animal farm","George Orwell",123, "✔")
