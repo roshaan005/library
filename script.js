@@ -109,9 +109,6 @@ function removeElement(e){
 }
 
 myLibrary.forEach(element=>{bookMaker(element)})
-// data.forEach(thingy=>{
-//     bookMaker(thingy)
-// })
 
 
 
