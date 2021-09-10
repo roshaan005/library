@@ -5,7 +5,7 @@ This project is a part of the Odin project which is an open source bootcamp for 
 
 
 ## functionality
-this project is more like a little library that can store all the books you want to read / have read ; in addition to that you can remove the books also and change their "read" status , if in case you read it or whatever it may be 
+the project uses local storage along with vanilla javascript to store your books so that you can keep track of all your reads!
 
 ## desiging
-the User interface is just a simple design for a basic library app styled by css only and no additional frameworks 
+A simple user interface designed with css only. 
